@@ -13,21 +13,25 @@ import java.io.IOException;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        String myHTML = "<html><title>does this work?</title><p>TEST!</p></html>";
-        System.out.println(StringEscapeUtils.escapeHtml(myHTML) + "\nare we live?");
+    public static void main( String[] args ) {
+		String myHTML = "<html><title>does this work?</title><p>TEST!</p></html>";
+		System.out.println(StringEscapeUtils.escapeHtml(myHTML) + "\nare we live?");
 
-        try {
-			Document doc = Jsoup.connect("https://www.adodell.com/").get();
+		String myURL = "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average";
+		try {
+			Document myDocumentObj = Jsoup.connect(myURL).get();
 
-			Element content = doc.getElementById("myNavigation");
+			for (Element row : myDocumentObj.select("table.wikitable th")){
+				// this doesnt work...
+				System.out.println(row.toString());
+			}
 
-			System.out.println(content.toString());
+			//this works!
+			System.out.println(myDocumentObj.outerHtml().substring(0,50000));
 
-		} catch(IOException e){
-        	System.out.println("WTF!");
+		} catch (IOException e) {
+			System.out.println("Jsoup connect FAILED :(");
 		}
 
-    }
+	}
 }
