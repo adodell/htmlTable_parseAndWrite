@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="71d7aafc-45ad-47df-b695-d9ac6be2213a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/unnamed/unnamed.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adodell/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adodell/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adodell/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adodell/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/htmlTable_parseAndWrite-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/htmlTable_parseAndWrite-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
@@ -35,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="183">
+              <caret line="42" column="41" lean-forward="true" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +85,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-226" />
-    <option name="y" value="-10" />
+    <option name="x" value="-348" />
+    <option name="y" value="110" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -148,12 +147,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548218033801" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548312129471" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -177,7 +176,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.htmlTable_parseAndWrite-1.0-SNAPSHOT.jar">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adodell.App" />
       <module name="htmlTable_parseAndWrite" />
@@ -211,8 +210,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.htmlTable_parseAndWrite-1.0-SNAPSHOT.jar" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JAR Application.htmlTable_parseAndWrite-1.0-SNAPSHOT.jar" />
         <item itemvalue="JUnit.AppTest" />
       </list>
     </recent_temporary>
@@ -239,7 +238,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -249,7 +248,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32719395" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -287,8 +286,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="183">
+          <caret line="42" column="41" lean-forward="true" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
