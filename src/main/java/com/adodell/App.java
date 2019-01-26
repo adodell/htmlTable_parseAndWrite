@@ -1,12 +1,9 @@
 package com.adodell;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.io.IOException;
 
 /**
  * Hello world!
@@ -15,7 +12,6 @@ import java.io.IOException;
 public class App 
 {
     public static void main( String[] args ) {
-
     	String myURL;
 
     	try{
@@ -24,11 +20,6 @@ public class App
 			System.out.println("No URL argument was input, using default...");
 			myURL = "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average";
 		}
-
-    	/*
-		String myHTML = "<html><title>does this work?</title><p>TEST!</p></html>";
-		System.out.println(StringEscapeUtils.escapeHtml(myHTML) + "\nare we live?");
-		*/
 
 		try {
 			Document myDocumentObj = Jsoup.connect(myURL).get();
@@ -54,7 +45,7 @@ public class App
 						}
 					}
 				}
-				if (table_i == 5){
+				if (table_i == 3){
 					break;
 				}
 			}
