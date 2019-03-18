@@ -133,3 +133,8 @@
     </pluginManagement>
   </build>
 </project>
+
+<!--
+to compile use
+mvn clean compile assembly:single
+-->

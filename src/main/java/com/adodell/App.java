@@ -1,41 +1,53 @@
 package com.adodell;
 
+import java.io.File;
+import java.net.URL;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.File;
-import java.util.ArrayList;
-
-/**
- * Hello world!
- *
- */
-public class App 
-{
+public class App {
     public static void main( String[] args ) {
+    	/*
+    	~~~~~~~~
+    	STEP 1:
+    	find argument
+    	~~~~~~~~
+    	 */
+
+    	// declaring My Arg to grab
     	String my_arg;
-		
+
     	// grabbing arg
     	try{
+    		// for testing local File
+    		my_arg = "C:/Users/Aaron/Documents/2Programming/java/htmlTable_parseAndWrite/tableExample.html";
+
     		//my_arg = args[0].toString();
-			my_arg = "C:\\Users\\Aaron\\Documents\\2Programming\\java\\htmlTable_parseAndWrite\\tableExample.html";
 		} 
-    	// if no arg use dfault
+    	// if no arg use default
     	catch (IndexOutOfBoundsException e) {
 			System.out.println("No argument was input, using default Wikipedia DJIA Components History page...");
 			my_arg = "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average";
 
-			// another good example "http://www.eaglemarineservices.com/tmsweb/unsecure/UNSVSLRPT.tms"
 			// problems with "https://en.wikipedia.org/wiki/Mike_Tyson", debug this!
 		}
 
+    	/*
+    	~~~~~~~~
+    	STEP 2:
+    	create Document obj from arg URL or File
+    	~~~~~~~~
+    	 */
+
+    	// declaring Document to get from My_arg
 		Document myDocumentObj;
-    	// checking if it is a URL
+
+    	// checking if it is a URL or File
 		try{
 			URL my_url = new URL(my_arg);
 
@@ -44,21 +56,35 @@ public class App
 
 		}
 		// if not URL, try to see if it is a path
-		catch (MalformedURLException e) {
+		catch (MalformedURLException tmp_badURL_exception) {
     		File my_file = new File(my_arg);
 
-    		// if the file does not exist, throw an error
-			if (!my_file.exists()){
-				throw new IllegalArgumentException("The argument path input: " + my_arg + " does not exist");
+    		// if the file is not readable, throw an error
+			if (!my_file.canRead()){
+				throw new IllegalArgumentException("The argument input: " + my_arg + " is not a URL or the File cannot be read");
+			}
+			// parse using JSOUP
+			try{
+				myDocumentObj = Jsoup.parse(my_file, null);
+			} catch (Exception tmp_parse_exception) {
+				tmp_parse_exception.printStackTrace();
+				throw new IllegalArgumentException("The argument file input: " + my_arg + " could not be parsed");
 			}
 
-			// parse using JSOUP
-			myDocumentObj = Jsoup.parse(my_file.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-
-			throw new IllegalArgumentException("The argument url input: " + my_arg+ " does not exist");
 		}
+		// catching a URL Exception
+		catch (IOException tmp_badIO_exception) {
+			tmp_badIO_exception.printStackTrace();
+
+			throw new IllegalArgumentException("The argument URL input: " + my_arg+ " does not work");
+		}
+
+		/*
+    	~~~~~~~~
+    	STEP 3:
+    	iterate through Table tags in Document
+    	~~~~~~~~
+    	 */
 
 		// creating Tables Elements lst
 		Elements tables_elements = myDocumentObj.select("table");
@@ -80,7 +106,7 @@ public class App
 			for (Element tmp_tSection_element : tSection_elements) {
 
 				// creating list of TR (and also TH) Elements
-				Elements tr_elements = tmp_tSection_element.select("tr,th");
+				Elements tr_elements = tmp_tSection_element.select("tr");
 
 				// how many TR elements in this TSection?
 				int tmp_tSection_trSizeInt = tr_elements.size();
@@ -89,7 +115,7 @@ public class App
 				for (int tmp_tr_i = 0; tmp_tr_i < tmp_tSection_trSizeInt; tmp_tr_i++) {
 					Element tmp_tr_element = tr_elements.get(tmp_tr_i);
 					// getting the TD Elements
-					Elements td_elements = tmp_tr_element.select("td");
+					Elements td_elements = tmp_tr_element.select("td,th");
 
 					// how many TD elements in this TRow?
 					int tmp_tr_tdSizeInt = td_elements.size();
@@ -109,11 +135,12 @@ public class App
 						}
 					}
 				}
-
-				//all of the TR and TDs have been iterated through
-				// now print out StrBuilder for table
-				System.out.println(tmp_tableStrBuilder.toString());
 			}
+
+			//all of the T Sections have been iterated through
+			// now print out StrBuilder for the Table
+			System.out.println(tmp_tableStrBuilder.toString());
+
 			// stopping after first 3 tables
 			if (table_i > 3){
 				break;
