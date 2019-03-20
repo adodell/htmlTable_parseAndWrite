@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71d7aafc-45ad-47df-b695-d9ac6be2213a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/howTo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adodell/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adodell/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tableExample.html" beforeDir="false" afterPath="$PROJECT_DIR$/tableExample.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adodell/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adodell/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adodell/TableInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adodell/TableInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/htmlTable_parseAndWrite-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/htmlTable_parseAndWrite-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,25 +20,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="133" column="91" lean-forward="true" selection-start-line="133" selection-start-column="91" selection-end-line="133" selection-end-column="91" />
+            <state relative-caret-position="343">
+              <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2420#2431#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+            <state relative-caret-position="301">
+              <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#784#785#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,6 +69,7 @@
       <find>myURL</find>
       <find>6ix9ine</find>
       <find>\</find>
+      <find>\t</find>
     </findStrings>
     <replaceStrings>
       <replace>tmp_tSection_element</replace>
@@ -84,6 +88,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tableExample.html" />
+        <option value="$PROJECT_DIR$/howTo.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/adodell/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java" />
       </list>
@@ -113,17 +118,19 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="148" />
-    <option name="y" value="-28" />
+    <option name="x" value="-21" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -132,19 +139,15 @@
               <item name="htmlTable_parseAndWrite" type="b2602c69:ProjectViewProjectNode" />
               <item name="htmlTable_parseAndWrite" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="htmlTable_parseAndWrite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="htmlTable_parseAndWrite" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552882083698" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553055711640" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -307,7 +310,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29317698" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30277187" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -316,12 +319,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32719395" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32719395" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
@@ -334,6 +337,18 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/adodell/App.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -475,22 +490,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java">
+    <entry file="file://$PROJECT_DIR$/howTo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="31" selection-start-column="27" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="133" column="91" lean-forward="true" selection-start-line="133" selection-start-column="91" selection-end-line="133" selection-end-column="91" />
+        <state relative-caret-position="343">
+          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2420#2431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/adodell/TableInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -5,49 +5,51 @@ import java.net.URL;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import java.util.ArrayList;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class App {
-    public static void main( String[] args ) {
-    	/*
-    	~~~~~~~~
-    	STEP 1:
-    	find argument
-    	~~~~~~~~
-    	 */
+	public static void main( String[] args ) {
+		/*
+		~~~~~~~~
+		STEP 1:
+		find argument
+		~~~~~~~~
+		 */
 
-    	// declaring My Arg to grab
-    	String my_arg;
+		// declaring My Arg to grab
+		String my_arg;
 
-    	// grabbing arg
-    	try{
-    		// for testing local File
-    		my_arg = "C:/Users/Aaron/Documents/2Programming/java/htmlTable_parseAndWrite/tableExample.html";
+		// grabbing arg
+		try{
+			// for testing local File
+			//my_arg = "C:/Users/Aaron/Documents/2Programming/java/htmlTable_parseAndWrite/tableExample.html";
 
-    		//my_arg = args[0].toString();
-		} 
-    	// if no arg use default
-    	catch (IndexOutOfBoundsException e) {
+			my_arg = args[0].toString();
+		}
+		// if no arg use default
+		catch (IndexOutOfBoundsException e) {
 			System.out.println("No argument was input, using default Wikipedia DJIA Components History page...");
 			my_arg = "https://en.wikipedia.org/wiki/Historical_components_of_the_Dow_Jones_Industrial_Average";
 
 			// problems with "https://en.wikipedia.org/wiki/Mike_Tyson", debug this!
 		}
 
-    	/*
-    	~~~~~~~~
-    	STEP 2:
-    	create Document obj from arg URL or File
-    	~~~~~~~~
-    	 */
+		/*
+		~~~~~~~~
+		STEP 2:
+		create Document obj from arg URL or File
+		~~~~~~~~
+		 */
 
-    	// declaring Document to get from My_arg
+		// declaring Document to get from My_arg
 		Document myDocumentObj;
 
-    	// checking if it is a URL or File
+		// checking if it is a URL or File
 		try{
 			URL my_url = new URL(my_arg);
 
@@ -57,9 +59,9 @@ public class App {
 		}
 		// if not URL, try to see if it is a path
 		catch (MalformedURLException tmp_badURL_exception) {
-    		File my_file = new File(my_arg);
+			File my_file = new File(my_arg);
 
-    		// if the file is not readable, throw an error
+			// if the file is not readable, throw an error
 			if (!my_file.canRead()){
 				throw new IllegalArgumentException("The argument input: " + my_arg + " is not a URL or the File cannot be read");
 			}
@@ -80,27 +82,39 @@ public class App {
 		}
 
 		/*
-    	~~~~~~~~
-    	STEP 3:
-    	iterate through Table tags in Document
-    	~~~~~~~~
-    	 */
+		~~~~~~~~
+		STEP 3:
+		iterate through Table tags in Document
+		~~~~~~~~
+		 */
 
 		// creating Tables Elements lst
 		Elements tables_elements = myDocumentObj.select("table");
 
-		// <table> iterator
-		for (Element tmp_table_element : tables_elements) {
+		// creating a TableInfo Array
+		ArrayList<TableInfo> tableInfo_objLst = new ArrayList<TableInfo>();
 
-			// print location of this tmp_table
-			int table_i = tables_elements.indexOf(tmp_table_element);
+		// populating the Arraylist with Elements as TableInfo objs
+		for (Element tmp_table_element : tables_elements) {
+			// creating a TableInfo obj
+			TableInfo tmp_tblInfo_obj = new TableInfo(tmp_table_element);
+			// adding this TblInfo Obj into Arraylist
+			tableInfo_objLst.add(tmp_tblInfo_obj);
+		}
+
+		System.out.println(String.format("\n~~~~~~~~~~~~~~~~~\n%d tables were found!!\n~~~~~~~~~~~~~~~~~\n\n", tableInfo_objLst.size()));
+
+		// iterating through every TableInfo obj
+		for (TableInfo tmp_tableInfo_obj : tableInfo_objLst) {
+			// print location of this tmp_tableInfoObj
+			int table_i = tableInfo_objLst.indexOf(tmp_tableInfo_obj);
 			System.out.println("\n" + table_i + "\n~~~~~~~~~~~~~\n\n");
 
 			// creation of Table StrBuilder
 			StringBuilder tmp_tableStrBuilder = new StringBuilder();
 
-			// creating list of TSection Elements
-			Elements tSection_elements = tmp_table_element.select("thead,tbody,tfoot");
+			// getting list of list of TSection Elements
+			Elements tSection_elements = tmp_tableInfo_obj.get_tSection_elements_lst();
 
 			// <tSection> iterator
 			for (Element tmp_tSection_element : tSection_elements) {
@@ -146,11 +160,11 @@ public class App {
 				break;
 			}
 		}
-
 	}
 }
 
 // STUFF TO DO
-// check through table for <TR> as well, without a Tbody...
+// implement all below into TableInfo.java Class....
+// check through table for <TR> as well, without a Tbody
 // create function that takes in TR Elements and outputs StringBuilder of these elements
 // for each table, iterate through elements, checking for TR, or TBody/foot/head(s)
