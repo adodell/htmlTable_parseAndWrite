@@ -26,6 +26,13 @@
       <version>1.8.3</version>
     </dependency>
 
+    <!-- FIle Utils -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.5</version>
+    </dependency>
+
     <!-- J unit -->
     <dependency>
       <groupId>junit</groupId>

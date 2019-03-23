@@ -1,8 +1,7 @@
 package com.adodell;
 
-import java.io.File;
+import java.io.*;
 import java.net.URL;
-import java.io.IOException;
 import java.net.MalformedURLException;
 
 import java.util.ArrayList;
@@ -11,6 +10,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import org.apache.commons.io.FileUtils;
 
 public class App {
 	public static void main( String[] args ) {
@@ -84,7 +85,8 @@ public class App {
 		/*
 		~~~~~~~~
 		STEP 3:
-		iterate through Table tags in Document
+		create Array of TableInfo objects from table tags in Document
+
 		~~~~~~~~
 		 */
 
@@ -104,67 +106,66 @@ public class App {
 
 		System.out.println(String.format("\n~~~~~~~~~~~~~~~~~\n%d tables were found!!\n~~~~~~~~~~~~~~~~~\n\n", tableInfo_objLst.size()));
 
+		/*
+		~~~~~~~~
+		STEP 4:
+		create Array of StringBuilder objects from the TableInfo objects
+		~~~~~~~~
+		 */
+
+		// creating StrBuilder Array
+		ArrayList<StringBuilder> csvFormat_strBuilder_arrayLst = new ArrayList<StringBuilder>();
+
 		// iterating through every TableInfo obj
 		for (TableInfo tmp_tableInfo_obj : tableInfo_objLst) {
-			// print location of this tmp_tableInfoObj
-			int table_i = tableInfo_objLst.indexOf(tmp_tableInfo_obj);
-			System.out.println("\n" + table_i + "\n~~~~~~~~~~~~~\n\n");
+			// add the stringBuilder to the ArrayList
+			csvFormat_strBuilder_arrayLst.add(tmp_tableInfo_obj.get_csvFormat_strBuilder());
+		}
 
-			// creation of Table StrBuilder
-			StringBuilder tmp_tableStrBuilder = new StringBuilder();
+		/*
+		~~~~~~~~
+		STEP 5:
+		create Directory for Tables, then populate with CSV Files
+		~~~~~~~~
+		 */
+		// find the Current directory
+		String currentDir_str = System.getProperty("user.dir");
 
-			// getting list of list of TSection Elements
-			Elements tSection_elements = tmp_tableInfo_obj.get_tSection_elements_lst();
-
-			// <tSection> iterator
-			for (Element tmp_tSection_element : tSection_elements) {
-
-				// creating list of TR (and also TH) Elements
-				Elements tr_elements = tmp_tSection_element.select("tr");
-
-				// how many TR elements in this TSection?
-				int tmp_tSection_trSizeInt = tr_elements.size();
-
-				// <tr > iterator
-				for (int tmp_tr_i = 0; tmp_tr_i < tmp_tSection_trSizeInt; tmp_tr_i++) {
-					Element tmp_tr_element = tr_elements.get(tmp_tr_i);
-					// getting the TD Elements
-					Elements td_elements = tmp_tr_element.select("td,th");
-
-					// how many TD elements in this TRow?
-					int tmp_tr_tdSizeInt = td_elements.size();
-
-					// <td > iterator
-					for (int tmp_td_i = 0; tmp_td_i < tmp_tr_tdSizeInt; tmp_td_i++) {
-						// pulling <td> element
-						Element tmp_td_element = td_elements.get(tmp_td_i);
-
-						// if this is not the last TD, append with ","
-						if (tmp_td_i + 1 != tmp_tr_tdSizeInt) {
-							tmp_tableStrBuilder.append(tmp_td_element.text()).append(",");
-						}
-						// otherwise this is LastTD, append with "\n"
-						else {
-							tmp_tableStrBuilder.append(tmp_td_element.text()).append("\n");
-						}
-					}
-				}
+		// creating new working directory
+		File tablesOutput_dir = new File(currentDir_str, "TableOutputs");
+		// if this dir already exists, delete it
+		if (tablesOutput_dir.exists()){
+			try{
+				FileUtils.deleteDirectory(tablesOutput_dir);
+			} catch (Exception E){
+				;
 			}
+		}
+		// now creating the DIr
+		tablesOutput_dir.mkdir();
 
-			//all of the T Sections have been iterated through
-			// now print out StrBuilder for the Table
-			System.out.println(tmp_tableStrBuilder.toString());
+		// iterate through every StrBuilder
+		for (int tmp_table_i = 0; tmp_table_i < csvFormat_strBuilder_arrayLst.size(); tmp_table_i++){
+			// pulling the StrBuilder from the Array
+			StringBuilder tmp_csvFormat_strBuilder = csvFormat_strBuilder_arrayLst.get(tmp_table_i);
 
-			// stopping after first 3 tables
-			if (table_i > 3){
-				break;
+			// FILE SETUP
+			// creating new File location
+			File tmp_table_fileObj = new File(tablesOutput_dir, String.format("Table_%d.csv", tmp_table_i + 1));
+
+			// create File itself, and popualte with StrBuilder
+			try{
+				// creating File
+				tmp_table_fileObj.createNewFile();
+				// create Writer
+				FileWriter tmp_table_fileWriterObj = new FileWriter(tmp_table_fileObj);
+				// write the StrBuilder
+				tmp_table_fileWriterObj.write(tmp_csvFormat_strBuilder.toString());
+				tmp_table_fileWriterObj.flush();
+				tmp_table_fileWriterObj.close();
+			} catch (Exception E){
+				;
 			}
 		}
 	}
 }
-
-// STUFF TO DO
-// implement all below into TableInfo.java Class....
-// check through table for <TR> as well, without a Tbody
-// create function that takes in TR Elements and outputs StringBuilder of these elements
-// for each table, iterate through elements, checking for TR, or TBody/foot/head(s)
