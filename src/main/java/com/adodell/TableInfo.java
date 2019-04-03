@@ -61,13 +61,18 @@ public class TableInfo {
                     // pulling <td> element
                     Element tmp_td_element = td_elements.get(tmp_td_i);
 
+                    // pulling the original TD text
+                    String tmp_td_original_text = tmp_td_element.text();
+                    // add quotes around to escape a Comma or NewLIne
+                    String tmp_td_cell_text = String.format("\"%s\"", tmp_td_original_text);
+
                     // if this is not the last TD, append with ","
                     if (tmp_td_i + 1 != tmp_tr_tdSizeInt) {
-                        csvFormat_strBuilder.append(tmp_td_element.text()).append(",");
+                        csvFormat_strBuilder.append(tmp_td_cell_text).append(",");
                     }
                     // otherwise this is LastTD, append with "\n"
                     else {
-                        csvFormat_strBuilder.append(tmp_td_element.text()).append("\n");
+                        csvFormat_strBuilder.append(tmp_td_cell_text).append("\n");
                     }
                 }
             }

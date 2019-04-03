@@ -104,7 +104,13 @@ public class App {
 			tableInfo_objLst.add(tmp_tblInfo_obj);
 		}
 
-		System.out.println(String.format("\n~~~~~~~~~~~~~~~~~\n%d tables were found!!\n~~~~~~~~~~~~~~~~~\n\n", tableInfo_objLst.size()));
+		// determining how many tables exist
+		String totalTables_count_str = Integer.toString(tableInfo_objLst.size());
+
+		System.out.println(String.format("\n~~~~~~~~~~~~~~~~~\n%s tables were found!!\n~~~~~~~~~~~~~~~~~\n\n", totalTables_count_str));
+
+		// finding how many leading zeros are necessary for file names
+		int leadingZeroForFileNames_count = totalTables_count_str.length();
 
 		/*
 		~~~~~~~~
@@ -128,12 +134,12 @@ public class App {
 		create Directory for Tables, then populate with CSV Files
 		~~~~~~~~
 		 */
-		// find the Current directory
+		// find the Current Working directory
 		String currentDir_str = System.getProperty("user.dir");
 
-		// creating new working directory
+		// creating new TableOutputs directory
 		File tablesOutput_dir = new File(currentDir_str, "TableOutputs");
-		// if this dir already exists, delete it
+		// if this Outputs dir already exists, delete it
 		if (tablesOutput_dir.exists()){
 			try{
 				FileUtils.deleteDirectory(tablesOutput_dir);
@@ -141,17 +147,19 @@ public class App {
 				;
 			}
 		}
-		// now creating the DIr
+		// now creating the TableOuputs Dir
 		tablesOutput_dir.mkdir();
 
-		// iterate through every StrBuilder
+		// iterate through every StrBuilder, saving as a CSV in the TableOuputs dir
 		for (int tmp_table_i = 0; tmp_table_i < csvFormat_strBuilder_arrayLst.size(); tmp_table_i++){
 			// pulling the StrBuilder from the Array
 			StringBuilder tmp_csvFormat_strBuilder = csvFormat_strBuilder_arrayLst.get(tmp_table_i);
 
 			// FILE SETUP
 			// creating new File location
-			File tmp_table_fileObj = new File(tablesOutput_dir, String.format("Table_%d.csv", tmp_table_i + 1));
+			File tmp_table_fileObj = new File(tablesOutput_dir,
+												String.format("Table_%0" + Integer.toString(leadingZeroForFileNames_count) +"d.csv",tmp_table_i + 1)
+			);
 
 			// create File itself, and popualte with StrBuilder
 			try{
@@ -164,6 +172,7 @@ public class App {
 				tmp_table_fileWriterObj.flush();
 				tmp_table_fileWriterObj.close();
 			} catch (Exception E){
+				//pass
 				;
 			}
 		}
